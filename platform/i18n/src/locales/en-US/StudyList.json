@@ -8,6 +8,8 @@
   "NumOfStudiesHiggerThan100Message": "Filter the list to 100 studies or less to enable sorting",
   "Modality": "Modality",
   "PatientName": "Patient Name",
+  "PatientAge": "Age",
+  "PatientSex": "Gender",
   "Previous": "< Back",
   "Page": "Page",
   "Next": "Next >",
@@ -15,5 +17,7 @@
   "Studies": "Studies",
   "StudyDate": "Study Date",
   "StudyDescription": "Description",
-  "StudyList": "Study List"
+  "StudyList": "Study List",
+  "Osteo": "PROS CXR: OSTEO",
+  "AIScore": "AI Score"
 }

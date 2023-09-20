@@ -232,15 +232,19 @@ function WorkList({
     const isExpanded = expandedRows.some(k => k === rowKey);
     const {
       studyInstanceUid,
-      accession,
+      // accession,
       modalities,
-      instances,
+      // instances,
       description,
-      mrn,
+      // mrn,
       patientName,
+      patientSex,
+      patientAge,
       date,
       time,
     } = study;
+    const aiScore = description; // `${(description * 100).toFixed(0)}%`;
+    const osteo = `${description < 0.5 ? 'N' : 'Y'}`;
     const studyDate =
       date &&
       moment(date, ['YYYYMMDD', 'YYYY.MM.DD'], true).isValid() &&
@@ -250,6 +254,8 @@ function WorkList({
       moment(time, ['HH', 'HHmm', 'HHmmss', 'HHmmss.SSS']).isValid() &&
       moment(time, ['HH', 'HHmm', 'HHmmss', 'HHmmss.SSS']).format('hh:mm A');
 
+    // as-is 4+3+5+4+3+3+4 = 26
+    // to-be 5+3+2+6+5+3 = 24
     return {
       row: [
         {
@@ -259,13 +265,31 @@ function WorkList({
           ) : (
             <span className="text-gray-700">(Empty)</span>
           ),
-          gridCol: 4,
+          gridCol: 5,
         },
         {
-          key: 'mrn',
-          content: <TooltipClipboard>{mrn}</TooltipClipboard>,
+          key: 'patientSex',
+          content: patientSex ? (
+            <TooltipClipboard>{patientSex}</TooltipClipboard>
+          ) : (
+            <span className="text-gray-700">(Empty)</span>
+          ),
           gridCol: 3,
         },
+        {
+          key: 'patientAge',
+          content: patientSex ? (
+            <TooltipClipboard>{patientAge}</TooltipClipboard>
+          ) : (
+            <span className="text-gray-700">(Empty)</span>
+          ),
+          gridCol: 2,
+        },
+        // {
+        //   key: 'mrn',
+        //   content: <TooltipClipboard>{mrn}</TooltipClipboard>,
+        //   gridCol: 3,
+        // },
         {
           key: 'studyDate',
           content: (
@@ -275,41 +299,46 @@ function WorkList({
             </>
           ),
           title: `${studyDate || ''} ${studyTime || ''}`,
+          gridCol: 6,
+        },
+        {
+          key: 'osteo',
+          content: <TooltipClipboard>{osteo}</TooltipClipboard>,
           gridCol: 5,
         },
         {
-          key: 'description',
-          content: <TooltipClipboard>{description}</TooltipClipboard>,
-          gridCol: 4,
+          key: 'aiScore',
+          content: <TooltipClipboard>{aiScore}</TooltipClipboard>,
+          gridCol: 5,
         },
-        {
-          key: 'modality',
-          content: modalities,
-          title: modalities,
-          gridCol: 3,
-        },
-        {
-          key: 'accession',
-          content: <TooltipClipboard>{accession}</TooltipClipboard>,
-          gridCol: 3,
-        },
-        {
-          key: 'instances',
-          content: (
-            <>
-              <Icon
-                name="group-layers"
-                className={classnames('mr-2 inline-flex w-4', {
-                  'text-primary-active': isExpanded,
-                  'text-secondary-light': !isExpanded,
-                })}
-              />
-              {instances}
-            </>
-          ),
-          title: (instances || 0).toString(),
-          gridCol: 4,
-        },
+        // {
+        //   key: 'modality',
+        //   content: modalities,
+        //   title: modalities,
+        //   gridCol: 3,
+        // },
+        // {
+        //   key: 'accession',
+        //   content: <TooltipClipboard>{accession}</TooltipClipboard>,
+        //   gridCol: 3,
+        // },
+        // {
+        //   key: 'instances',
+        //   content: (
+        //     <>
+        //       <Icon
+        //         name="group-layers"
+        //         className={classnames('mr-2 inline-flex w-4', {
+        //           'text-primary-active': isExpanded,
+        //           'text-secondary-light': !isExpanded,
+        //         })}
+        //       />
+        //       {instances}
+        //     </>
+        //   ),
+        //   title: (instances || 0).toString(),
+        //   gridCol: 4,
+        // },
       ],
       // Todo: This is actually running for all rows, even if they are
       // not clicked on.
@@ -389,8 +418,13 @@ function WorkList({
           </div>
         </StudyListExpandedRow>
       ),
+      /* 바로 Basic View 로 이동 */
       onClickRow: () =>
-        setExpandedRows(s => (isExpanded ? s.filter(n => rowKey !== n) : [...s, rowKey])),
+        navigate({
+          pathname: '/viewer',
+          search: `StudyInstanceUIDs=${studyInstanceUid}`,
+        }),
+      // setExpandedRows(s => (isExpanded ? s.filter(n => rowKey !== n) : [...s, rowKey])),
       isExpanded,
     };
   });
