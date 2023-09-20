@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0-beta.76](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.75...v3.7.0-beta.76) (2023-09-19)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.75](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.74...v3.7.0-beta.75) (2023-09-18)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.74](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.73...v3.7.0-beta.74) (2023-09-15)
+
+
+### Bug Fixes
+
+* **measurements:** Update the calibration tool to match changes in CS3D ([#3505](https://github.com/OHIF/Viewers/issues/3505)) ([38af311](https://github.com/OHIF/Viewers/commit/38af3112ec1f94f36c0ef64ff1cf9d21c0981c81))
+
+
+
+
+
+# [3.7.0-beta.73](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.72...v3.7.0-beta.73) (2023-09-12)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.72](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.71...v3.7.0-beta.72) (2023-09-12)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.71](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.70...v3.7.0-beta.71) (2023-09-12)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.70](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.69...v3.7.0-beta.70) (2023-09-12)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.69](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.68...v3.7.0-beta.69) (2023-09-11)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
+# [3.7.0-beta.68](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.67...v3.7.0-beta.68) (2023-09-11)
+
+**Note:** Version bump only for package @ohif/core
+
+
+
+
+
 # [3.7.0-beta.67](https://github.com/OHIF/Viewers/compare/v3.7.0-beta.66...v3.7.0-beta.67) (2023-09-06)
 
 **Note:** Version bump only for package @ohif/core
