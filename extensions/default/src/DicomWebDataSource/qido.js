@@ -49,12 +49,17 @@ function processResults(qidoStudies) {
       studyInstanceUid: getString(qidoStudy['0020000D']),
       date: getString(qidoStudy['00080020']), // YYYYMMDD
       time: getString(qidoStudy['00080030']), // HHmmss.SSS (24-hour, minutes, seconds, fractional seconds)
-      accession: getString(qidoStudy['00080050']) || '', // short string, probably a number?
-      mrn: getString(qidoStudy['00100020']) || '', // medicalRecordNumber
+      // accession: getString(qidoStudy['00080050']) || '', // short string, probably a number?
+      // mrn: getString(qidoStudy['00100020']) || '', // medicalRecordNumber
       patientName: utils.formatPN(getName(qidoStudy['00100010'])) || '',
-      instances: Number(getString(qidoStudy['00201208'])) || 0, // number
+      // instances: Number(getString(qidoStudy['00201208'])) || 0, // number
       description: getString(qidoStudy['00081030']) || '',
       modalities: getString(getModalities(qidoStudy['00080060'], qidoStudy['00080061'])) || '',
+      // Added Metadata for Osteoscore
+      aiScore: getString(qidoStudy['00081030']).split(',')[0] || '',
+      osteo: +getString(qidoStudy['00081030']).split(',')[0] < 0.5 ? 'N' : 'Y' || '',
+      patientSex: getString(qidoStudy['00081030']).split(',')[1] || '',
+      patientAge: getString(qidoStudy['00081030']).split(',')[2] || '',
     })
   );
 
@@ -151,6 +156,8 @@ function mapParams(params, options = {}) {
   const commaSeparatedFields = [
     '00081030', // Study Description
     '00080060', // Modality
+    '00100040', // PatientSex
+    '00101010', // PatientAge
     // Add more fields here if you want them in the result
   ].join(',');
 
@@ -210,4 +217,11 @@ function mapParams(params, options = {}) {
   return final;
 }
 
-export { mapParams, search, processResults };
+async function metaInStudy(dicomWebClient, StudyInstanceUID) {
+  const metadataPromise = await fetch(
+    `${dicomWebClient.qidoURL}/studies/${StudyInstanceUID}/metadata`
+  );
+  return await metadataPromise.json();
+}
+
+export { mapParams, search, processResults, metaInStudy };
