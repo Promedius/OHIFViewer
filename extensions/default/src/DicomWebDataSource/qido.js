@@ -58,8 +58,8 @@ function processResults(qidoStudies) {
       // Added Metadata for Osteoscore
       aiScore: getString(qidoStudy['00081030']).split(',')[0] || '',
       osteo: +getString(qidoStudy['00081030']).split(',')[0] < 0.5 ? 'N' : 'Y' || '',
-      patientSex: getString(qidoStudy['00081030']).split(',')[1] || '',
-      patientAge: getString(qidoStudy['00081030']).split(',')[2] || '',
+      patientSex: getString(qidoStudy['00100040']),
+      patientAge: getString(qidoStudy['00101010']),
     })
   );
 
