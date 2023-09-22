@@ -49,10 +49,10 @@ function processResults(qidoStudies) {
       studyInstanceUid: getString(qidoStudy['0020000D']),
       date: getString(qidoStudy['00080020']), // YYYYMMDD
       time: getString(qidoStudy['00080030']), // HHmmss.SSS (24-hour, minutes, seconds, fractional seconds)
-      // accession: getString(qidoStudy['00080050']) || '', // short string, probably a number?
-      // mrn: getString(qidoStudy['00100020']) || '', // medicalRecordNumber
+      accession: getString(qidoStudy['00080050']) || '', // short string, probably a number?
+      mrn: getString(qidoStudy['00100020']) || '', // medicalRecordNumber
       patientName: utils.formatPN(getName(qidoStudy['00100010'])) || '',
-      // instances: Number(getString(qidoStudy['00201208'])) || 0, // number
+      instances: Number(getString(qidoStudy['00201208'])) || 0, // number
       description: getString(qidoStudy['00081030']) || '',
       modalities: getString(getModalities(qidoStudy['00080060'], qidoStudy['00080061'])) || '',
       // Added Metadata for Osteoscore
