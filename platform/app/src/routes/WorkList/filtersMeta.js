@@ -57,7 +57,7 @@ const filtersMeta = [
     gridCol: 5,
   },
   {
-    name: 'aiscore',
+    name: 'description',
     displayName: 'AIScore',
     inputType: 'None',
     isSortable: true,
