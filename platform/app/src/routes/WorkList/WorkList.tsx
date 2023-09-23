@@ -235,16 +235,16 @@ function WorkList({
       // accession,
       modalities,
       // instances,
-      description,
+      // description,
       // mrn,
+      aiScore,
+      osteo,
       patientName,
       patientSex,
       patientAge,
       date,
       time,
     } = study;
-    const aiScore = description; // `${(description * 100).toFixed(0)}%`;
-    const osteo = `${description < 0.5 ? 'N' : 'Y'}`;
     const studyDate =
       date &&
       moment(date, ['YYYYMMDD', 'YYYY.MM.DD'], true).isValid() &&
@@ -308,7 +308,11 @@ function WorkList({
         },
         {
           key: 'aiScore',
-          content: <TooltipClipboard>{aiScore}</TooltipClipboard>,
+          content: (
+            <TooltipClipboard>{`${
+              +aiScore < 0.5 ? 'low' : (aiScore * 100).toFixed(0) + '%'
+            }`}</TooltipClipboard>
+          ),
           gridCol: 5,
         },
         // {
@@ -333,11 +337,11 @@ function WorkList({
         //           'text-secondary-light': !isExpanded,
         //         })}
         //       />
-        //       {instances}
+        //       {aiScore}
         //     </>
         //   ),
-        //   title: (instances || 0).toString(),
-        //   gridCol: 4,
+        //   title: (aiScore || 0).toString(),
+        //   gridCol: 5,
         // },
       ],
       // Todo: This is actually running for all rows, even if they are
