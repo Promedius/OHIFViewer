@@ -121,7 +121,29 @@ function createDicomWebApi(dicomWebConfig, userAuthenticationService) {
               supportsWildcard: dicomWebConfig.supportsWildcard,
             }) || {};
 
-          const results = await qidoSearch(qidoDicomWebClient, undefined, undefined, mappedParams);
+          let results = await qidoSearch(qidoDicomWebClient, undefined, undefined, mappedParams);
+
+          /* set custom filters: osteo and patientSex */
+          if (origParams.osteo) {
+            const osteoValues = origParams.osteo.split(',');
+            results = results.filter(result => {
+              const description = +result['00081030'].Value[0];
+              return (
+                (description < 0.5 && osteoValues.includes('N')) ||
+                (description >= 0.5 && osteoValues.includes('Y'))
+              );
+            });
+          }
+          if (origParams.patientSex) {
+            const patientSexValues = origParams.patientSex.split(',');
+            results = results.filter(result => {
+              const patientSex = result['00100040'].Value[0];
+              return (
+                (patientSex === 'F' && patientSexValues.includes('F')) ||
+                (patientSex === 'M' && patientSexValues.includes('M'))
+              );
+            });
+          }
 
           return processResults(results);
         },
