@@ -14,8 +14,8 @@ const filtersMeta = [
     inputType: 'MultiSelect',
     inputProps: {
       options: [
-        { value: 'Female', label: 'F' },
-        { value: 'Male', label: 'M' },
+        { value: 'F', label: 'Female' },
+        { value: 'M', label: 'Male' },
       ],
     },
     isSortable: true,
