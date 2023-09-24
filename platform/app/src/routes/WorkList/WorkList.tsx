@@ -173,6 +173,10 @@ function WorkList({
         }
       } else if (key === 'modalities' && currValue.length) {
         queryString.modalities = currValue.join(',');
+      } else if (key === 'patientSex' && currValue.length) {
+        queryString.patientSex = [currValue].join(',');
+      } else if (key === 'osteo' && currValue.length) {
+        queryString.osteo = [currValue].join(',');
       } else if (currValue !== defaultValue) {
         queryString[key] = currValue;
       }
@@ -587,6 +591,8 @@ const defaultFilterValues = {
   },
   description: '',
   modalities: [],
+  patientSex: [],
+  osteo: [],
   accession: '',
   sortBy: '',
   sortDirection: 'none',
@@ -617,6 +623,8 @@ function _getQueryFilterValues(params) {
     description: params.get('description'),
     modalities: params.get('modalities') ? params.get('modalities').split(',') : [],
     accession: params.get('accession'),
+    patientSex: params.get('patientSex'),
+    osteo: params.get('osteo'),
     sortBy: params.get('sortby'),
     sortDirection: params.get('sortdirection'),
     pageNumber: _tryParseInt(params.get('pagenumber'), undefined),

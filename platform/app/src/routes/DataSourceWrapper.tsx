@@ -245,6 +245,8 @@ function _getQueryFilterValues(query, queryLimit) {
     //
     startDate: query.get('startDate'),
     endDate: query.get('endDate'),
+    osteo: query.get('osteo'),
+    patientSex: query.get('patientSex'),
     page: _tryParseInt(query.get('page'), undefined),
     pageNumber,
     resultsPerPage,
