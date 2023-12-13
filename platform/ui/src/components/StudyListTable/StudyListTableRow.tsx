@@ -4,16 +4,27 @@ import classnames from 'classnames';
 import getGridWidthClass from '../../utils/getGridWidthClass';
 
 import Icon from '../Icon';
+import CheckBox from '../CheckBox/index';
 
 const StudyListTableRow = props => {
   const { tableData } = props;
   const { row, expandedContent, onClickRow, isExpanded, dataCY } = tableData;
+  console.log(tableData, 'tableData');
   return (
     <>
       <tr
         className="select-none"
         data-cy={dataCY}
       >
+        <td>
+          <CheckBox
+            checked={isExpanded}
+            onChange={() => {
+              onClickRow();
+            }}
+            label=""
+          ></CheckBox>
+        </td>
         <td
           className={classnames('border-0 p-0', {
             'border-secondary-light bg-primary-dark border-b': isExpanded,
