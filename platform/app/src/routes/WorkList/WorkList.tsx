@@ -534,7 +534,16 @@ function WorkList({
               numOfStudies={numOfStudies}
               querying={querying}
               filtersMeta={filtersMeta}
+              onCheckboxChange={handleCheckboxChange}
             />
+            {/* link to the selected studies  */}
+            {selectedInstanceUIDs && (
+              <div className="flex items-center justify-center">
+                <Link to={`/viewer?StudyInstanceUIDs=${selectedInstanceUIDs}`}>
+                  <LegacyButton rounded="full">Selected Studies</LegacyButton>
+                </Link>
+              </div>
+            )}
             <div className="grow">
               <StudyListPagination
                 onChangePage={onPageNumberChange}
