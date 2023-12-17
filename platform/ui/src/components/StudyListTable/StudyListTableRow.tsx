@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import getGridWidthClass from '../../utils/getGridWidthClass';
-
 import Icon from '../Icon';
-import CheckBox from '../CheckBox/index';
 
 const StudyListTableRow = props => {
-  const { tableData } = props;
+  const { tableData, onCheckboxChange } = props;
   const { row, expandedContent, onClickRow, isExpanded, dataCY } = tableData;
-  console.log(tableData, 'tableData');
+  const [isChecked, setChecked] = useState(false);
+
+  // This function handles the change event of a checkbox.
+  // It updates the state with the checked value and calls the onCheckboxChange function.
+  const handleCheckboxChange = event => {
+    const checked = event.target.checked;
+    setChecked(checked);
+    onCheckboxChange(checked, dataCY);
+  };
+
   return (
     <>
       <tr
@@ -17,13 +24,11 @@ const StudyListTableRow = props => {
         data-cy={dataCY}
       >
         <td>
-          <CheckBox
-            checked={isExpanded}
-            onChange={() => {
-              onClickRow();
-            }}
-            label=""
-          ></CheckBox>
+          <input
+            type="checkbox"
+            // This checkbox will trigger the handleCheckboxChange function when its value changes
+            onChange={handleCheckboxChange}
+          ></input>
         </td>
         <td
           className={classnames('border-0 p-0', {
@@ -120,6 +125,7 @@ StudyListTableRow.propTypes = {
     isExpanded: PropTypes.bool.isRequired,
     dataCY: PropTypes.string,
   }),
+  onCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default StudyListTableRow;
