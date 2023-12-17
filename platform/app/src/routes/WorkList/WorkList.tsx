@@ -73,6 +73,7 @@ function WorkList({
     ...defaultFilterValues,
     ...sessionQueryFilterValues,
   });
+  const [selectedInstanceUIDs, setSelectedInstanceUIDs] = useState([]);
 
   const debouncedFilterValues = useDebounce(filterValues, 200);
   const { resultsPerPage, pageNumber, sortBy, sortDirection } = filterValues;
@@ -122,6 +123,23 @@ function WorkList({
   const querying = useMemo(() => {
     return isLoadingData || expandedRows.length > 0;
   }, [isLoadingData, expandedRows]);
+  /**
+   * Handles the change event of a checkbox.
+   *
+   * @param {boolean} checked - The new checked state of the checkbox.
+   * @param {string} InstanceUIDTag - The unique identifier tag of the checkbox.
+   */
+  const handleCheckboxChange = (checked, InstanceUIDTag) => {
+    // Extract the InstanceUID from the InstanceUIDTag
+    const InstanceUID = InstanceUIDTag.replace('studyRow-', '');
+
+    // Update the selected InstanceUIDs based on the checked state
+    if (checked) {
+      setSelectedInstanceUIDs(prevSelected => [...prevSelected, InstanceUID]);
+    } else {
+      setSelectedInstanceUIDs(prevSelected => prevSelected.filter(uid => uid !== InstanceUID));
+    }
+  };
 
   const setFilterValues = val => {
     if (filterValues.pageNumber === val.pageNumber) {
