@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import StudyListTableRow from './StudyListTableRow';
 
-const StudyListTable = ({ tableDataSource, querying }) => {
+const StudyListTable = ({ tableDataSource, querying, onCheckboxChange }) => {
   return (
     <div className="bg-black">
       <div className="container relative m-auto">
@@ -17,6 +17,7 @@ const StudyListTable = ({ tableDataSource, querying }) => {
                 <StudyListTableRow
                   tableData={tableData}
                   key={i}
+                  onCheckboxChange={onCheckboxChange}
                 />
               );
             })}
@@ -37,6 +38,7 @@ StudyListTable.propTypes = {
       isExpanded: PropTypes.bool.isRequired,
     })
   ),
+  onCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default StudyListTable;
