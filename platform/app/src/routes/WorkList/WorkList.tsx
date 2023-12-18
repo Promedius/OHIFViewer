@@ -538,10 +538,12 @@ function WorkList({
             />
             {/* link to the selected studies  */}
             {selectedInstanceUIDs && (
-              <div className="flex items-center justify-center">
-                <Link to={`/viewer?StudyInstanceUIDs=${selectedInstanceUIDs}`}>
-                  <LegacyButton rounded="full">Selected Studies</LegacyButton>
-                </Link>
+              <div className="container relative m-auto py-10">
+                <div className="flex justify-end">
+                  <Link to={`/viewer?StudyInstanceUIDs=${selectedInstanceUIDs}`}>
+                    <LegacyButton rounded="full">Selected Studies</LegacyButton>
+                  </Link>
+                </div>
               </div>
             )}
             <div className="grow">
