@@ -540,7 +540,7 @@ function WorkList({
             {selectedInstanceUIDs && (
               <div className="container relative m-auto py-10">
                 <div className="flex justify-end">
-                  <Link to={`/viewer?StudyInstanceUIDs=${selectedInstanceUIDs}`}>
+                  <Link to={`/segmentation?StudyInstanceUIDs=${selectedInstanceUIDs}`}>
                     <LegacyButton rounded="full">Selected Studies</LegacyButton>
                   </Link>
                 </div>
