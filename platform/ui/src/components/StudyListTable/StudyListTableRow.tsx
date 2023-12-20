@@ -23,13 +23,6 @@ const StudyListTableRow = props => {
         className="select-none"
         data-cy={dataCY}
       >
-        <td>
-          <input
-            type="checkbox"
-            // This checkbox will trigger the handleCheckboxChange function when its value changes
-            onChange={handleCheckboxChange}
-          ></input>
-        </td>
         <td
           className={classnames('border-0 p-0', {
             'border-secondary-light bg-primary-dark border-b': isExpanded,
@@ -57,7 +50,7 @@ const StudyListTableRow = props => {
                     },
                     { 'bg-secondary-dark': isExpanded }
                   )}
-                  onClick={onClickRow}
+                  // onClick={onClickRow}
                 >
                   {row.map((cell, index) => {
                     const { content, title, gridCol } = cell;
@@ -74,13 +67,16 @@ const StudyListTableRow = props => {
                         }}
                         title={title}
                       >
-                        <div className="flex">
+                        <div className="flex space-x-4">
                           {index === 0 && (
                             <div>
-                              <Icon
-                                name={isExpanded ? 'chevron-down' : 'chevron-right'}
-                                className="mr-4 inline-flex"
-                              />
+                              <td>
+                                <input
+                                  type="checkbox"
+                                  // This checkbox will trigger the handleCheckboxChange function when its value changes
+                                  onChange={handleCheckboxChange}
+                                ></input>
+                              </td>
                             </div>
                           )}
                           <div
