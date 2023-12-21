@@ -20,9 +20,27 @@ const StudyListTableRow = props => {
   return (
     <>
       <tr
-        className="select-none"
         data-cy={dataCY}
+        className={classnames(
+          'select-none',
+          'hover:bg-secondary-main cursor-pointer transition duration-300',
+          {
+            'bg-primary-dark': !isExpanded,
+          },
+          { 'bg-secondary-dark': isExpanded }
+        )}
       >
+        <td
+          className={classnames('border-0 p-0', {
+            'border-secondary-light border-b': !isExpanded,
+          })}
+        >
+          <input
+            type="checkbox"
+            // This checkbox will trigger the handleCheckboxChange function when its value changes
+            onChange={handleCheckboxChange}
+          ></input>
+        </td>
         <td
           className={classnames('border-0 p-0', {
             'border-secondary-light bg-primary-dark border-b': isExpanded,
@@ -68,17 +86,7 @@ const StudyListTableRow = props => {
                         title={title}
                       >
                         <div className="flex space-x-4">
-                          {index === 0 && (
-                            <div>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  // This checkbox will trigger the handleCheckboxChange function when its value changes
-                                  onChange={handleCheckboxChange}
-                                ></input>
-                              </td>
-                            </div>
-                          )}
+                          {index === 0 && <div></div>}
                           <div
                             className={classnames({ 'overflow-hidden': true }, { truncate: true })}
                           >
