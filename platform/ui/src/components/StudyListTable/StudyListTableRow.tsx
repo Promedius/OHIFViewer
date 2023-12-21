@@ -50,7 +50,7 @@ const StudyListTableRow = props => {
                     },
                     { 'bg-secondary-dark': isExpanded }
                   )}
-                  // onClick={onClickRow}
+                  onClick={onClickRow}
                 >
                   {row.map((cell, index) => {
                     const { content, title, gridCol } = cell;

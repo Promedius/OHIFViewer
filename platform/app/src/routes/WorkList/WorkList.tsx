@@ -417,8 +417,13 @@ function WorkList({
           </div>
         </StudyListExpandedRow>
       ),
+      /* 바로 Basic View 로 이동 */
       onClickRow: () =>
-        setExpandedRows(s => (isExpanded ? s.filter(n => rowKey !== n) : [...s, rowKey])),
+        navigate({
+          pathname: '/viewer',
+          search: `StudyInstanceUIDs=${studyInstanceUid}`,
+        }),
+      // setExpandedRows(s => (isExpanded ? s.filter(n => rowKey !== n) : [...s, rowKey])),
       isExpanded,
     };
   });
