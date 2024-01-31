@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 import NavBar from '../NavBar';
 import Svg from '../Svg';
@@ -19,6 +20,7 @@ function Header({
   ...props
 }): ReactNode {
   const { t } = useTranslation('Header');
+  const navigate = useNavigate();
 
   // TODO: this should be passed in as a prop instead and the react-router-dom
   // dependency should be dropped
@@ -42,16 +44,19 @@ function Header({
               'mr-3 inline-flex items-center',
               isReturnEnabled && 'cursor-pointer'
             )}
-            onClick={onClickReturn}
             data-cy="return-to-work-list"
           >
             {isReturnEnabled && (
               <Icon
                 name="chevron-left"
                 className="text-primary-active w-8"
+                onClick={onClickReturn}
               />
             )}
-            <div className="ml-4">
+            <div
+              className="ml-4"
+              onClick={() => navigate('/local')}
+            >
               {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Svg name="logo-ohif" />}
             </div>
           </div>
