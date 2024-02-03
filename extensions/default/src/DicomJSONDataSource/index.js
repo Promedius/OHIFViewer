@@ -4,6 +4,7 @@ import OHIF from '@ohif/core';
 import getImageId from '../DicomWebDataSource/utils/getImageId';
 import getDirectURL from '../utils/getDirectURL';
 
+const DICOM_JSON_URL = "dicom.json";
 const metadataProvider = OHIF.classes.MetadataProvider;
 
 const mappings = {
@@ -45,10 +46,7 @@ function createDicomJSONApi(dicomJsonConfig) {
   const { wadoRoot } = dicomJsonConfig;
 
   const implementation = {
-    initialize: async ({ query, url }) => {
-      if (!url) {
-        url = query.get('url');
-      }
+    initialize: async ({ query, url = DICOM_JSON_URL }) => {
       let metaData = getMetaDataByURL(url);
 
       // if we have already cached the data from this specific url
@@ -97,21 +95,18 @@ function createDicomJSONApi(dicomJsonConfig) {
       studies: {
         mapParams: () => {},
         search: async param => {
-          const [key, value] = Object.entries(param)[0];
-          const mappedParam = mappings[key];
-
-          // todo: should fetch from dicomMetadataStore
-          const studies = findStudies(mappedParam, value);
-
-          return studies.map(aStudy => {
+          return _store.urls[0].studies.map(aStudy => {
             return {
               accession: aStudy.AccessionNumber,
               date: aStudy.StudyDate,
-              description: aStudy.StudyDescription,
+              aiScore: aStudy.StudyDescription,
               instances: aStudy.NumInstances,
               modalities: aStudy.Modalities,
               mrn: aStudy.PatientID,
               patientName: aStudy.PatientName,
+              patientSex: aStudy.PatientSex,
+              patientAge: aStudy.PatientAge,
+              osteo: (parseFloat(aStudy.StudyDescription) >= 0.5) ? "Y" : "N",
               studyInstanceUid: aStudy.StudyInstanceUID,
               NumInstances: aStudy.NumInstances,
               time: aStudy.StudyTime,
@@ -247,8 +242,17 @@ function createDicomJSONApi(dicomJsonConfig) {
       return imageIds;
     },
     getStudyInstanceUIDs: ({ params, query }) => {
-      const url = query.get('url');
-      return _store.studyInstanceUIDMap.get(url);
+      const { StudyInstanceUIDs: paramsStudyInstanceUIDs } = params;
+      const queryStudyInstanceUIDs = query.getAll('StudyInstanceUIDs');
+
+      const StudyInstanceUIDs = queryStudyInstanceUIDs || paramsStudyInstanceUIDs;
+      const StudyInstanceUIDsAsArray =
+        StudyInstanceUIDs && Array.isArray(StudyInstanceUIDs)
+          ? StudyInstanceUIDs
+          : [StudyInstanceUIDs];
+      const studies = _store.studyInstanceUIDMap.get(DICOM_JSON_URL);
+
+      return StudyInstanceUIDsAsArray.filter((study) => studies.includes(study));
     },
   };
   return IWebApiDataSource.create(implementation);

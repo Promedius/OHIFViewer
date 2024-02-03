@@ -4,14 +4,14 @@ const filtersMeta = [
   {
     name: 'patientName',
     displayName: 'PatientName',
-    inputType: 'Text',
+    inputType: 'None',
     isSortable: true,
     gridCol: 5,
   },
   {
     name: 'patientSex',
     displayName: 'PatientSex',
-    inputType: 'MultiSelect',
+    inputType: 'None',
     inputProps: {
       options: [
         { value: 'F', label: 'Female' },
@@ -39,14 +39,14 @@ const filtersMeta = [
   {
     name: 'studyDate',
     displayName: 'StudyDate',
-    inputType: 'DateRange',
+    inputType: 'None',
     isSortable: true,
     gridCol: 6,
   },
   {
     name: 'osteo',
     displayName: 'Osteo',
-    inputType: 'MultiSelect',
+    inputType: 'None',
     inputProps: {
       options: [
         { value: 'Y', label: 'Y' },

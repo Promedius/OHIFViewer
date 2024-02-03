@@ -1,0 +1,399 @@
+{
+  "studies": [
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10587525860320695247864907385319918156",
+      "StudyDescription": "0.32",
+      "StudyDate": "20230907",
+      "StudyTime": "164700.000000",
+      "PatientName": "Patient1",
+      "PatientID": "p1",
+      "AccessionNumber": "",
+      "PatientAge": "052Y",
+      "PatientSex": "M",
+      "series": [
+        {
+          "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.13908087057399082740840257530012335960",
+          "SeriesDescription": "",
+          "SeriesNumber": 1,
+          "SeriesTime": "",
+          "Modality": "DX",
+          "instances": [
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4096,
+                "InstanceNumber": 1,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.1.1",
+                "PhotometricInterpretation": "MONOCHROME2",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 1,
+                "HighBit": 8,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.840.113619.2.203.4.2147483647.1329184140.702406",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.13908087057399082740840257530012335960",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10587525860320695247864907385319918156",
+                "WindowCenter": 180,
+                "WindowWidth": 180,
+                "RescaleIntercept": 0,
+                "RescaleSlope": 1,
+                "TransferSyntaxUID": "1.2.840.10008.1.2"
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0314_1.512.dcm"
+            },
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4915,
+                "InstanceNumber": 2,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.7",
+                "PhotometricInterpretation": "RGB",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 3,
+                "HighBit": 7,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.54223485377652686888673646988611229725",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.13908087057399082740840257530012335960",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10587525860320695247864907385319918156",
+                "WindowCenter": 128,
+                "WindowWidth": 255,
+                "TransferSyntaxUID": "1.2.840.10008.1.2.1",
+                "PlanarConfiguration": 0
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0314_1.512.dcm_result_SC_probability.dcm"
+            }
+          ]
+        }
+      ],
+      "NumInstances": 2,
+      "Modalities": "DX"
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.12722165986667496618608713353725959053",
+      "StudyDescription": "0.32",
+      "StudyDate": "20230907",
+      "StudyTime": "164700.000000",
+      "PatientName": "Patient2",
+      "PatientID": "p2",
+      "AccessionNumber": "",
+      "PatientAge": "055Y",
+      "PatientSex": "F",
+      "series": [
+        {
+          "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.82593366942454893833093975771587777107",
+          "SeriesDescription": "",
+          "SeriesNumber": 1,
+          "SeriesTime": "",
+          "Modality": "DX",
+          "instances": [
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4096,
+                "InstanceNumber": 1,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.1.1",
+                "PhotometricInterpretation": "MONOCHROME2",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 1,
+                "HighBit": 8,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.840.113619.2.203.4.2147483647.1329184140.702406",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.82593366942454893833093975771587777107",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.12722165986667496618608713353725959053",
+                "WindowCenter": 180,
+                "WindowWidth": 180,
+                "RescaleIntercept": 0,
+                "RescaleSlope": 1,
+                "TransferSyntaxUID": "1.2.840.10008.1.2"
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0366_-1.910.dcm"
+            },
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4915,
+                "InstanceNumber": 2,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.7",
+                "PhotometricInterpretation": "RGB",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 3,
+                "HighBit": 7,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.40191574461692163556950016160432644265",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.82593366942454893833093975771587777107",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.12722165986667496618608713353725959053",
+                "WindowCenter": 128,
+                "WindowWidth": 255,
+                "TransferSyntaxUID": "1.2.840.10008.1.2.1",
+                "PlanarConfiguration": 0
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0366_-1.910.dcm_result_SC_probability.dcm"
+            }
+          ]
+        }
+      ],
+      "NumInstances": 2,
+      "Modalities": "DX"
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10629550434542974257764814287394942586",
+      "StudyDescription": "0.74",
+      "StudyDate": "20230907",
+      "StudyTime": "164700.000000",
+      "PatientName": "Patient3",
+      "PatientID": "p3",
+      "AccessionNumber": "",
+      "PatientAge": "061Y",
+      "PatientSex": "M",
+      "series": [
+        {
+          "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.95841183990738031969652757296316362657",
+          "SeriesDescription": "",
+          "SeriesNumber": 1,
+          "SeriesTime": "",
+          "Modality": "DX",
+          "instances": [
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4096,
+                "InstanceNumber": 1,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.1.1",
+                "PhotometricInterpretation": "MONOCHROME2",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 1,
+                "HighBit": 8,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.840.113619.2.203.4.2147483647.1329184140.702406",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.95841183990738031969652757296316362657",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10629550434542974257764814287394942586",
+                "WindowCenter": 180,
+                "WindowWidth": 180,
+                "RescaleIntercept": 0,
+                "RescaleSlope": 1,
+                "TransferSyntaxUID": "1.2.840.10008.1.2"
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0818_-2.803.dcm"
+            },
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4915,
+                "InstanceNumber": 2,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.7",
+                "PhotometricInterpretation": "RGB",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 3,
+                "HighBit": 7,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.11085993168599202955657991196825061987",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.95841183990738031969652757296316362657",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10629550434542974257764814287394942586",
+                "WindowCenter": 128,
+                "WindowWidth": 255,
+                "TransferSyntaxUID": "1.2.840.10008.1.2.1",
+                "PlanarConfiguration": 0
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0818_-2.803.dcm_result_SC_probability.dcm"
+            }
+          ]
+        }
+      ],
+      "NumInstances": 2,
+      "Modalities": "DX"
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.56537655718399726620051424347713317201",
+      "StudyDescription": "0.32",
+      "StudyDate": "20230907",
+      "StudyTime": "164700.000000",
+      "PatientName": "Patient4",
+      "PatientID": "p4",
+      "AccessionNumber": "",
+      "PatientAge": "058Y",
+      "PatientSex": "F",
+      "series": [
+        {
+          "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.41738436784096873305827559564604023390",
+          "SeriesDescription": "",
+          "SeriesNumber": 1,
+          "SeriesTime": "",
+          "Modality": "DX",
+          "instances": [
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4096,
+                "InstanceNumber": 1,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.1.1",
+                "PhotometricInterpretation": "MONOCHROME2",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 1,
+                "HighBit": 8,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.840.113619.2.203.4.2147483647.1329184140.702406",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.41738436784096873305827559564604023390",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.56537655718399726620051424347713317201",
+                "WindowCenter": 180,
+                "WindowWidth": 180,
+                "RescaleIntercept": 0,
+                "RescaleSlope": 1,
+                "TransferSyntaxUID": "1.2.840.10008.1.2"
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0852_-0.875.dcm"
+            },
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4915,
+                "InstanceNumber": 2,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.7",
+                "PhotometricInterpretation": "RGB",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 3,
+                "HighBit": 7,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.11375885631137165153318821231930383997",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.41738436784096873305827559564604023390",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.56537655718399726620051424347713317201",
+                "WindowCenter": 128,
+                "WindowWidth": 255,
+                "TransferSyntaxUID": "1.2.840.10008.1.2.1",
+                "PlanarConfiguration": 0
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0852_-0.875.dcm_result_SC_probability.dcm"
+            }
+          ]
+        }
+      ],
+      "NumInstances": 2,
+      "Modalities": "DX"
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.98242937285065852543814170133807147956",
+      "StudyDescription": "0.95",
+      "StudyDate": "20230907",
+      "StudyTime": "164700.000000",
+      "PatientName": "Patient5",
+      "PatientID": "p5",
+      "AccessionNumber": "",
+      "PatientAge": "065Y",
+      "PatientSex": "F",
+      "series": [
+        {
+          "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.54092622664782790497154292087374119081",
+          "SeriesDescription": "",
+          "SeriesNumber": 1,
+          "SeriesTime": "",
+          "Modality": "DX",
+          "instances": [
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4096,
+                "InstanceNumber": 1,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.1.1",
+                "PhotometricInterpretation": "MONOCHROME2",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 1,
+                "HighBit": 8,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.840.113619.2.203.4.2147483647.1329184140.702406",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.54092622664782790497154292087374119081",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.98242937285065852543814170133807147956",
+                "WindowCenter": 180,
+                "WindowWidth": 180,
+                "RescaleIntercept": 0,
+                "RescaleSlope": 1,
+                "TransferSyntaxUID": "1.2.840.10008.1.2"
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0967_-3.006.dcm"
+            },
+            {
+              "metadata": {
+                "Columns": 4096,
+                "Rows": 4915,
+                "InstanceNumber": 2,
+                "SOPClassUID": "1.2.840.10008.5.1.4.1.1.7",
+                "PhotometricInterpretation": "RGB",
+                "BitsAllocated": 8,
+                "BitsStored": 8,
+                "PixelRepresentation": 0,
+                "SamplesPerPixel": 3,
+                "HighBit": 7,
+                "ImageType": [
+                  "ORIGINAL",
+                  "PRIMARY"
+                ],
+                "Modality": "DX",
+                "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.39736431133037565985300258470728996724",
+                "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.54092622664782790497154292087374119081",
+                "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.98242937285065852543814170133807147956",
+                "WindowCenter": 128,
+                "WindowWidth": 255,
+                "TransferSyntaxUID": "1.2.840.10008.1.2.1",
+                "PlanarConfiguration": 0
+              },
+              "url": "dicomweb:dicoms/Promedius_synthetic_CXR_normal_0967_-3.006.dcm_result_SC_probability.dcm"
+            }
+          ]
+        }
+      ],
+      "NumInstances": 2,
+      "Modalities": "DX"
+    }
+  ]
+}
