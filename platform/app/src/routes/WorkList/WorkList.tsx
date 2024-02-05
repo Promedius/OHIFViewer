@@ -177,6 +177,8 @@ function WorkList({
         queryString.patientSex = [currValue].join(',');
       } else if (key === 'osteo' && currValue.length) {
         queryString.osteo = [currValue].join(',');
+      } else if (key === 'aiScore' && currValue.length) {
+        queryString.aiScore = [currValue].join(',');
       } else if (currValue !== defaultValue) {
         queryString[key] = currValue;
       }
@@ -589,7 +591,7 @@ const defaultFilterValues = {
     startDate: null,
     endDate: null,
   },
-  description: '',
+  aiScore: [],
   modalities: [],
   patientSex: [],
   osteo: [],
@@ -620,7 +622,7 @@ function _getQueryFilterValues(params) {
       startDate: params.get('startdate') || null,
       endDate: params.get('enddate') || null,
     },
-    description: params.get('description'),
+    aiScore: params.get('aiScore'),
     modalities: params.get('modalities') ? params.get('modalities').split(',') : [],
     accession: params.get('accession'),
     patientSex: params.get('patientSex'),
