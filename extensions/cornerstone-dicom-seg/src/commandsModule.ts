@@ -19,6 +19,10 @@ import {
   getTargetViewport,
 } from './utils/hydrationUtils';
 
+import { data } from 'dcmjs';
+import { Buffer } from 'buffer';
+const { datasetToDict } = data;
+
 const { datasetToBlob } = dcmjs.data;
 
 const {
@@ -35,46 +39,53 @@ const {
 
 const { downloadDICOMData } = helpers;
 
-// make fake CSV data
-// Mock function to generate fake CSV data
-function generateFakeCSVData() {
-  // Generate dummy data
-  const headers = ['Name', 'Age', 'Email'];
-  const data = [
-    ['John Doe', 30, 'john@example.com'],
-    ['Jane Smith', 25, 'jane@example.com'],
-    ['Alice Johnson', 35, 'alice@example.com'],
-  ];
+async function downloadCSVData(bufferOrDataset, filename) {
+  try {
+    let blob;
+    console.log(bufferOrDataset);
+    // Convert buffer or dataset to Blob
+    if (bufferOrDataset instanceof ArrayBuffer) {
+      blob = new Blob([bufferOrDataset], { type: 'application/dicom' });
+    } else {
+      if (!bufferOrDataset._meta) {
+        throw new Error('Dataset must have _meta');
+      }
+      const buffer = Buffer.from(datasetToDict(bufferOrDataset).write());
+      console.log(datasetToDict(bufferOrDataset).write());
+      blob = new Blob([buffer], { type: 'application/dicom' });
+    }
+    console.log(blob);
+    // Send the DICOM data to the server for segmentation measurement
+    const response = await fetch('http://localhost:3001/measure_segmentation', {
+      method: 'POST',
+      body: blob,
+      headers: {
+        'Content-Disposition': `attachment; filename=${filename}.dcm`, // Corrected header name
+      },
+    });
 
-  // Format data into CSV string
-  const csv = [headers.join(','), ...data.map(row => row.join(','))].join('\n');
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error('Failed to fetch CSV data');
+    }
 
-  return csv;
-}
+    // Extract CSV data from the response
+    const csvBlob = await response.blob();
 
-// Function to download CSV data
-function downloadCSVData(data, filename) {
-  // Generate fake CSV data
-  const fakeCSVData = generateFakeCSVData();
+    // Create a download link for the CSV file
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(csvBlob);
+    link.download = `${filename}.csv`;
 
-  // Create a Blob object from the CSV data
-  const blob = new Blob([fakeCSVData], { type: 'application/csv' });
+    // Append the link to the document body and trigger the download
+    document.body.appendChild(link);
+    link.click();
 
-  // Create a link element
-  const link = document.createElement('a');
-  link.href = window.URL.createObjectURL(blob);
-
-  // Set the filename for the downloaded file
-  link.download = `${filename}.csv`;
-
-  // Append the link to the body
-  document.body.appendChild(link);
-
-  // Programmatically click the link to trigger the download
-  link.click();
-
-  // Remove the link from the body
-  document.body.removeChild(link);
+    // Cleanup: remove the link from the document body
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error('Error downloading CSV:', error);
+  }
 }
 
 const commandsModule = ({
@@ -355,7 +366,7 @@ const commandsModule = ({
         segmentationId,
       });
       downloadCSVData(generatedSegmentation.dataset, `${segmentationInOHIF.label}`);
-      console.log(generatedSegmentation.dataset, segmentationId);
+      // console.log(generatedSegmentation.dataset, segmentationId);
     },
 
     /**
