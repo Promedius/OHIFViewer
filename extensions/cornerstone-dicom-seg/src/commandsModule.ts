@@ -19,6 +19,10 @@ import {
   getTargetViewport,
 } from './utils/hydrationUtils';
 
+import { data } from 'dcmjs';
+import { Buffer } from 'buffer';
+const { datasetToDict } = data;
+
 const { datasetToBlob } = dcmjs.data;
 
 const {
@@ -34,6 +38,55 @@ const {
 } = adaptersRT;
 
 const { downloadDICOMData } = helpers;
+
+async function downloadCSVData(bufferOrDataset, filename) {
+  try {
+    let blob;
+    console.log(bufferOrDataset);
+    // Convert buffer or dataset to Blob
+    if (bufferOrDataset instanceof ArrayBuffer) {
+      blob = new Blob([bufferOrDataset], { type: 'application/dicom' });
+    } else {
+      if (!bufferOrDataset._meta) {
+        throw new Error('Dataset must have _meta');
+      }
+      const buffer = Buffer.from(datasetToDict(bufferOrDataset).write());
+      console.log(datasetToDict(bufferOrDataset).write());
+      blob = new Blob([buffer], { type: 'application/dicom' });
+    }
+    console.log(blob);
+    // Send the DICOM data to the server for segmentation measurement
+    const response = await fetch('http://localhost:3001/measure_segmentation', {
+      method: 'POST',
+      body: blob,
+      headers: {
+        'Content-Disposition': `attachment; filename=${filename}.dcm`, // Corrected header name
+      },
+    });
+
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error('Failed to fetch CSV data');
+    }
+
+    // Extract CSV data from the response
+    const csvBlob = await response.blob();
+
+    // Create a download link for the CSV file
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(csvBlob);
+    link.download = `${filename}.csv`;
+
+    // Append the link to the document body and trigger the download
+    document.body.appendChild(link);
+    link.click();
+
+    // Cleanup: remove the link from the document body
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error('Error downloading CSV:', error);
+  }
+}
 
 const commandsModule = ({
   servicesManager,
@@ -307,6 +360,15 @@ const commandsModule = ({
 
       downloadDICOMData(generatedSegmentation.dataset, `${segmentationInOHIF.label}`);
     },
+    downloadCSV: ({ segmentationId }) => {
+      const segmentationInOHIF = segmentationService.getSegmentation(segmentationId);
+      const generatedSegmentation = actions.generateSegmentation({
+        segmentationId,
+      });
+      downloadCSVData(generatedSegmentation.dataset, `${segmentationInOHIF.label}`);
+      // console.log(generatedSegmentation.dataset, segmentationId);
+    },
+
     /**
      * Stores a segmentation based on the provided segmentationId into a specified data source.
      * The SeriesDescription is derived from user input or defaults to the segmentation label,
@@ -423,6 +485,9 @@ const commandsModule = ({
     },
     downloadRTSS: {
       commandFn: actions.downloadRTSS,
+    },
+    downloadCSV: {
+      commandFn: actions.downloadCSV,
     },
   };
 
